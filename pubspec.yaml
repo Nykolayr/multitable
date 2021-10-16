@@ -1,0 +1,47 @@
+name: multitable
+description: Приложение для изучения таблицы умножения
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  
+  cupertino_icons: ^1.0.2
+  flutter_bloc: ^7.0.1
+  equatable: ^2.0.3
+  flutter_svg: ^0.22.0
+  easy_localization: ^3.0.0
+  flutter_native_splash: ^1.1.8+4 
+  shared_preferences: ^2.0.8
+  ocarina: ^0.1.2
+  flutter_launcher_icons: ^0.9.0
+dev_dependencies:
+
+# flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  flutter_test:
+    sdk: flutter
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+  
+# flutter pub run flutter_native_splash:create
+flutter_native_splash:
+# разрешение 1500*2346
+  image: assets/splash.png
+  color: "732984"
+
+flutter:
+  uses-material-design: true
+  assets:
+   - assets/
+   - assets/img/
+   - assets/icon/
+   - assets/translations/
+
