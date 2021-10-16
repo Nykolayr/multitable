@@ -15,6 +15,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.0"
+  bart:
+    dependency: "direct main"
+    description:
+      name: bart
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.1"
   bloc:
     dependency: transitive
     description:
@@ -136,7 +143,7 @@ packages:
       name: flutter_svg
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.22.0"
+    version: "0.23.0+1"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

@@ -1,6 +1,6 @@
 name: multitable
-description: Приложение для изучения таблицы умножения
-version: 1.0.0+1
+description: An application for studying multiplication tables and other examples from mathematics
+version: 2.5.3
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -12,15 +12,16 @@ dependencies:
 
 
   
-  cupertino_icons: ^1.0.2
-  flutter_bloc: ^7.0.1
+  cupertino_icons: ^1.0.3
+  flutter_bloc: ^7.3.1
   equatable: ^2.0.3
-  flutter_svg: ^0.22.0
+  flutter_svg: ^0.23.0
   easy_localization: ^3.0.0
   flutter_native_splash: ^1.1.8+4 
   shared_preferences: ^2.0.8
   ocarina: ^0.1.2
   flutter_launcher_icons: ^0.9.0
+  bart: ^0.1.1
 dev_dependencies:
 
 # flutter pub run flutter_launcher_icons:main
