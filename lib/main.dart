@@ -9,9 +9,10 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   userRepository = await UserRepository.create();
   runApp(EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ru', 'RU')],
+      supportedLocales: [Locale('ru', 'RU'), Locale('en', 'US')],
       path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: Locale('ru', 'RU'),
+      startLocale: Locale('ru', 'RU'),
       child: MyApp(
         userRepository: userRepository,
       )));

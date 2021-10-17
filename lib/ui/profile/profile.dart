@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:multitable/ui/widgets.dart';
+import 'package:multitable/utils/colors.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,8 +13,12 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('ProfilePage'),
+    return Scaffold(
+      backgroundColor: greyColor,
+      appBar: setAppBar(tr('profile')),
+      body: Container(
+        child: Text('profile'),
+      ),
     );
   }
 }
