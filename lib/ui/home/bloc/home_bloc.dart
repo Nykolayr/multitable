@@ -9,7 +9,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     required UserRepository userRepository,
   }) : super(HomeInitial()) {
-    final UserRepository _userRepository;
-    on<HomeEvent>((event, emit) {});
+    int index = 0;
+    int errorIndex = 2;
+    List<List<int>> errorList = [];
+    UserRepository _userRepository = userRepository;
+    String _textAnswer = '';
+    String _textquestion = '';
+    int _operand1 = 0;
+    int _operand2 = 0;
+    on<HomeEvent>((event, emit) {
+      if(event.)
+    });
   }
 }
