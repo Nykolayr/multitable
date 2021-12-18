@@ -16,7 +16,8 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: greyColor,
       appBar: setAppBar(tr('profile')),
-      body: Container(
+      body: const SizedBox(
+        width: double.infinity,
         child: Text('profile'),
       ),
     );

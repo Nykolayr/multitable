@@ -16,9 +16,7 @@ class _ProgressPageState extends State<ProgressPage> {
     return Scaffold(
       backgroundColor: greyColor,
       appBar: setAppBar(tr('progress')),
-      body: Container(
-        child: Text('profile'),
-      ),
+      body: const Text('profile'),
     );
   }
 }

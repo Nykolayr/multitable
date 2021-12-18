@@ -29,7 +29,7 @@ List<BartMenuRoute> subRoutes() {
         value: userRepository,
         child: BlocProvider(
           create: (_) => HomeBloc(userRepository: userRepository),
-          child: HomePage(),
+          child: const HomePage(),
         ),
       ),
     ),
@@ -38,13 +38,13 @@ List<BartMenuRoute> subRoutes() {
       label: tr('progress'),
       icon: Icons.emoji_events_outlined,
       path: '/progress',
-      pageBuilder: (contextn, settings) => ProgressPage(),
+      pageBuilder: (contextn, settings) => const ProgressPage(),
     ),
     BartMenuRoute.bottomBar(
       label: tr('profile'),
       icon: Icons.settings,
       path: '/Profile',
-      pageBuilder: (context, settings) => ProfilePage(),
+      pageBuilder: (context, settings) => const ProfilePage(),
     ),
   ];
 }
@@ -53,7 +53,7 @@ Route<dynamic> routes(RouteSettings settings) {
   switch (settings.name) {
     case '/':
       return MaterialPageRoute(
-          builder: (_) => MainPageMenu(routesBuilder: subRoutes));
+          builder: (_) => const MainPageMenu(routesBuilder: subRoutes));
     default:
       throw 'unexpected Route';
   }

@@ -36,7 +36,7 @@ class Multi {
 
   //возращает строку с умножением и результатом в запомни
   strZap() {
-    String ret = "$_zap";
+    String ret = _zap;
     String lt = rezult().toString();
     ret += ' $_operQuest1 $_signMult $_operQuest2 = $lt';
     if (_operQuest1 != _operQuest2) {

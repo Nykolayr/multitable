@@ -12,5 +12,5 @@ class HomeInitial extends HomeState {}
 class NextStep extends HomeState {
   final String question;
   final String questionBottom;
-  NextStep(this.question, this.questionBottom);
+  const NextStep(this.question, this.questionBottom);
 }

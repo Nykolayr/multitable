@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       body: BlocListener<HomeBloc, HomeState>(
         listener: (context, state) {},
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 25,
             horizontal: 25,
           ),
@@ -49,24 +49,24 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.center,
                   width: double.infinity,
                   height: 100,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: greenLightColor,
                     borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
-                        color: const Color(0xcc000000),
+                        color: Color(0xcc000000),
                         offset: Offset(0, 2),
                         blurRadius: 4,
                       ),
                       BoxShadow(
-                        color: const Color(0x80000000),
+                        color: Color(0x80000000),
                         offset: Offset(0, -2),
                         blurRadius: 4,
                       ),
                     ],
                   ),
-                  child: Text(
+                  child: const Text(
                     '2*4=63',
                     style: TextStyle(
                       color: Colors.black,
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
+                const SizedBox(
                   height: 30,
                   child: Text(
                     'Внимание',

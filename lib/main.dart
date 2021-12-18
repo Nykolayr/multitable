@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:multitable/repository/userRepository.dart';
-import 'package:multitable/utils/routers.dart';
+import 'package:multitable/repository/user_repository.dart';
+import 'package:multitable/routers/routers.dart';
 import 'package:multitable/utils/value.dart';
 
 void main() async {
@@ -9,10 +9,10 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   userRepository = await UserRepository.create();
   runApp(EasyLocalization(
-      supportedLocales: [Locale('ru', 'RU'), Locale('en', 'US')],
+      supportedLocales: const [Locale('ru', 'RU'), Locale('en', 'US')],
       path: 'assets/translations',
-      fallbackLocale: Locale('ru', 'RU'),
-      startLocale: Locale('ru', 'RU'),
+      fallbackLocale: const Locale('ru', 'RU'),
+      startLocale: const Locale('ru', 'RU'),
       child: MyApp(
         userRepository: userRepository,
       )));
