@@ -54,7 +54,11 @@ class UserRepository {
       falseAnswer = prefs.getInt('falseAnswer') ?? 0;
       hintCount = prefs.getInt('hintCount') ?? 0;
       averegeAnswer = prefs.getDouble('averegeAnswer') ?? 0;
-      errorList = json.decode(prefs.getString(' errorList') ?? '');
+      try {
+        errorList = json.decode(prefs.getString('errorList') ?? '');
+      } catch (e) {
+        errorList = [];
+      }
     } else {
       await saveUser();
     }

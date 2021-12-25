@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:multitable/ui/widgets.dart';
+import 'package:multitable/ui/widgets/app_bar.dart';
 import 'package:multitable/utils/colors.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,8 +14,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: greyColor,
-      appBar: setAppBar(tr('profile')),
+      backgroundColor: AppColor.meddleGrey,
+      appBar: AppBarWithIcon(title: tr('profile')),
       body: const SizedBox(
         width: double.infinity,
         child: Text('profile'),

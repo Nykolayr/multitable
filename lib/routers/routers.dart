@@ -71,9 +71,9 @@ class MainPageMenu extends StatelessWidget {
       navigatorObservers: [routeObserver],
       bottomBar: BartBottomBar.fromFactory(
         elevation: 10,
-        selectedItemColor: selected,
+        selectedItemColor: AppColor.yellow,
         unselectedItemColor: Colors.white,
-        bgColor: bottomBar,
+        bgColor: AppColor.darkBroun,
         bottomBarFactory: BartMaterialBottomBar.bottomBarFactory,
       ),
     );
