@@ -4,8 +4,9 @@ import 'package:bart/bart/bottom_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multitable/ui/home/bloc/home_bloc.dart';
+import 'package:multitable/domain/models/multi.dart';
 import 'package:multitable/ui/home/home.dart';
+import 'package:multitable/ui/home/home_cubit.dart';
 import 'package:multitable/ui/profile/profile.dart';
 import 'package:multitable/ui/progress/progress.dart';
 import 'package:multitable/utils/colors.dart';
@@ -20,6 +21,7 @@ Future appPushNamed(String route, {Object? arguments}) =>
     navigatorKey.currentState!.pushNamed(route, arguments: arguments);
 
 List<BartMenuRoute> subRoutes() {
+  
   return [
     BartMenuRoute.bottomBar(
       label: tr('training'),
@@ -28,7 +30,7 @@ List<BartMenuRoute> subRoutes() {
       pageBuilder: (context, settings) => RepositoryProvider.value(
         value: userRepository,
         child: BlocProvider(
-          create: (_) => HomeBloc(userRepository: userRepository),
+          create: (_) => HomeCubit(Multi(userRepository.step)),
           child: const HomePage(),
         ),
       ),

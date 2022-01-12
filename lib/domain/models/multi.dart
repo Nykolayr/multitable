@@ -1,13 +1,17 @@
 /*   классы   */
 //класс умножения
+import 'package:easy_localization/easy_localization.dart';
+import 'package:multitable/utils/value.dart';
+
 class Multi {
   int _operQuest1 = 2;
   int _operQuest2 = 2;
   int _operAnswer1 = 2;
   int _operAnswer2 = 2;
+  String userAnswer = '';
   String answer = '';
   final String _signMult = '\u{00D7}'; // знак умножения
-  final String _zap = ' Запомни:';
+  final String _zap = tr('remember');
   setOper(List<int> oper) {
     _operAnswer1 = oper[0];
     _operAnswer2 = oper[1];
@@ -16,6 +20,14 @@ class Multi {
       _operQuest2 = oper[1];
     }
     answer = '${rezult()}';
+  }
+
+  Multi(int step) {
+    setStep(step);
+  }
+
+  setStep(int step) {
+    setOper(partsList[step]);
   }
 
   //возращает результат умножения

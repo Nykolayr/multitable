@@ -1,4 +1,4 @@
-import 'package:multitable/repository/user_repository.dart';
+import 'package:multitable/domain/repository/user_repository.dart';
 import 'package:ocarina/ocarina.dart';
 
 late UserRepository userRepository;

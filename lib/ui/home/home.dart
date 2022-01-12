@@ -2,10 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multitable/ui/home/bloc/home_bloc.dart';
+import 'package:multitable/domain/models/multi.dart';
+import 'package:multitable/ui/home/home_cubit.dart';
 import 'package:multitable/ui/widgets/app_bar.dart';
 import 'package:multitable/ui/widgets/widgets.dart';
 import 'package:multitable/utils/colors.dart';
+import 'package:multitable/utils/value.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,15 +17,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late HomeBloc _homeBloc;
-
   @override
   void initState() {
-    _homeBloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
   }
 
   getCifra(int cifra) {
+    context.read<HomeCubit>().emit();
     if (kDebugMode) {
       print('console $cifra');
     }
@@ -49,9 +49,8 @@ class _HomePageState extends State<HomePage> {
         clickButton: () {},
         isIcon: true,
       ),
-      body: BlocListener<HomeBloc, HomeState>(
-        listener: (context, state) {},
-        child: Container(
+      body: BlocBuilder<HomeCubit, Multi>(
+        builder: (context, multi) => Container(
           padding: const EdgeInsets.symmetric(
             vertical: 25,
             horizontal: 25,
@@ -64,10 +63,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: 20,
-                  color: AppColor.yellow,
-                ),
+                Widgets.progressBar(
+                    ((userRepository.step * 100) / (partsList.length - 1))
+                        .floor(),
+                    context),
                 const SizedBox(
                   height: 20,
                 ),
@@ -92,9 +91,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  child: const Text(
-                    '2*4=63',
-                    style: TextStyle(
+                  child: Text(
+                    '${multi.strQuest()} ${multi.userAnswer} ',
+                    style: const TextStyle(
                       color: AppColor.darkgrey,
                       fontWeight: FontWeight.bold,
                       fontSize: 52,
@@ -121,7 +120,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         for (int k = 1; k < 6; k++)
                           Expanded(
-                            child: Widgets.buttonCifra(k, getCifra),
+                            child: Widgets.buttonCifra(
+                                k, context.read<HomeCubit>().emit(state.a)),
                           ),
                       ],
                     ),

@@ -3,6 +3,32 @@ import 'package:flutter_svg/svg.dart';
 import 'package:multitable/utils/colors.dart';
 
 class Widgets {
+  static Widget progressBar(int procent, BuildContext context) {
+    return Container(
+      color: AppColor.yellow,
+      height: 25,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: [
+          Container(
+            color: AppColor.red,
+            width: (MediaQuery.of(context).size.width - 50) * (procent / 100),
+          ),
+          Align(
+            child: Text(
+              '$procent%',
+              // textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: (procent < 51) ? AppColor.darkgrey : Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   static Widget buttonCifra(int cifra, Function callBack) {
     if (cifra == 10) cifra = 0;
     return GestureDetector(
@@ -23,6 +49,27 @@ class Widgets {
             fontSize: 42,
             fontWeight: FontWeight.w600,
           ),
+        ),
+      ),
+    );
+  }
+
+  static Widget iconAction(String sign, Function callBack) {
+    return GestureDetector(
+      onTap: () => callBack(),
+      child: Container(
+        padding: const EdgeInsets.only(right: 16, left: 8, top: 8, bottom: 8),
+        color: Colors.transparent,
+        child: CircleAvatar(
+          radius: 16,
+          child: SvgPicture.asset(
+            sign,
+            width: 20,
+            height: 20,
+            fit: BoxFit.fill,
+            color: AppColor.darkBroun,
+          ),
+          backgroundColor: Colors.white,
         ),
       ),
     );

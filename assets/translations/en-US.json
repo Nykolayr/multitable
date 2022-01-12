@@ -1,5 +1,11 @@
 {
    "training": "Training",
    "progress": "Progress",
-   "profile": "Profile"
+   "profile": "Profile",
+   "guest": "Guest",
+   "attention": "Attention",
+   "right_answer": "Right answer:",
+   "incorrect": "incorrect",
+   "remember": "Remember:",
+   "and": "and "
 }

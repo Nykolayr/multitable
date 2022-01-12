@@ -1,5 +1,11 @@
 {
     "training": "Тренировка",
     "progress": "Достижения",
-    "profile": "Настройки"
+    "profile": "Настройки",
+    "guest": "Гость",
+    "attention": "Внимание",
+    "right_answer": "Правильный ответ:",
+    "incorrect": "неверно",
+    "remember": "Запомни:",
+    "and": "и"
 }

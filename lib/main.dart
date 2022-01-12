@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:multitable/repository/user_repository.dart';
 import 'package:multitable/routers/routers.dart';
 import 'package:multitable/utils/value.dart';
+
+import 'domain/repository/user_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

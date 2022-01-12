@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:multitable/ui/widgets/widgets.dart';
 import 'package:multitable/utils/colors.dart';
 
 class AppBarWithIcon extends StatelessWidget implements PreferredSizeWidget {
@@ -49,31 +50,12 @@ class AppBarWithIcon extends StatelessWidget implements PreferredSizeWidget {
           )
         ],
       ),
-      actions: [
-        isIcon
-            ? GestureDetector(
-                onTap: clickButton,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
-                  color: Colors.transparent,
-                  child: CircleAvatar(
-                    radius: 16,
-                    child: SvgPicture.asset(
-                      "assets/icon/user.svg",
-                      width: 20,
-                      height: 20,
-                      fit: BoxFit.none,
-                      color: AppColor.darkBroun,
-                    ),
-                    backgroundColor: Colors.white,
-                  ),
-                ),
-              )
-            : const SizedBox.shrink(),
-      ],
+      actions: isIcon
+          ? [
+              Widgets.iconAction("assets/icon/restart.svg", () => {}),
+              Widgets.iconAction("assets/icon/user.svg", () => {}),
+            ]
+          : [],
       elevation: 5,
       automaticallyImplyLeading: false,
       backgroundColor: AppColor.darkBroun,
