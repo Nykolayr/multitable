@@ -5,7 +5,10 @@
     "guest": "Гость",
     "attention": "Внимание",
     "right_answer": "Правильный ответ:",
-    "incorrect": "неверно",
+    "incorrect": " - неверно",
     "remember": "Запомни:",
-    "and": "и"
+    "and": "и",
+    "check": "Проверить",
+    "right": "ПРАВИЛЬНО!",
+    "enter_answer": "Введите ответ"
 }

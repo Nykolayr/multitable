@@ -4,13 +4,12 @@ import 'package:bart/bart/bottom_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multitable/domain/models/multi.dart';
+import 'package:multitable/domain/repository/user_repository.dart';
+import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/ui/home/home.dart';
-import 'package:multitable/ui/home/home_cubit.dart';
 import 'package:multitable/ui/profile/profile.dart';
 import 'package:multitable/ui/progress/progress.dart';
 import 'package:multitable/utils/colors.dart';
-import 'package:multitable/utils/value.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -21,18 +20,14 @@ Future appPushNamed(String route, {Object? arguments}) =>
     navigatorKey.currentState!.pushNamed(route, arguments: arguments);
 
 List<BartMenuRoute> subRoutes() {
-  
   return [
     BartMenuRoute.bottomBar(
       label: tr('training'),
       icon: Icons.home,
       path: '/training',
-      pageBuilder: (context, settings) => RepositoryProvider.value(
-        value: userRepository,
-        child: BlocProvider(
-          create: (_) => HomeCubit(Multi(userRepository.step)),
-          child: const HomePage(),
-        ),
+      pageBuilder: (context, settings) => BlocProvider(
+        create: (_) => HomeBloc(context.read<UserRepository>()),
+        child: const HomePage(),
       ),
     ),
     BartMenuRoute.bottomBar(

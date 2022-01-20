@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multitable/utils/colors.dart';
@@ -107,7 +108,7 @@ class Widgets {
 
   static Widget buttonEnter(Function callBack) {
     return GestureDetector(
-      onTap: () => callBack('enter'),
+      onTap: () => callBack(),
       child: Container(
         height: 58,
         width: 58,
@@ -117,9 +118,9 @@ class Widgets {
           border: AppColor.border,
         ),
         alignment: Alignment.center,
-        child: const Text(
-          'Проверить',
-          style: TextStyle(
+        child: Text(
+          tr('check'),
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 22,
             fontWeight: FontWeight.w600,

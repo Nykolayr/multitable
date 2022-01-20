@@ -17,7 +17,7 @@ class UserRepository {
   static Future<UserRepository> create() async {
     late UserRepository userRepository;
     String? data = await LocalData().loadJson();
-    if (data != '{}') {
+    if (data != '{}' && data != '') {
       userRepository = UserRepository.fromJson(jsonDecode(data!));
     } else {
       userRepository = UserRepository._();

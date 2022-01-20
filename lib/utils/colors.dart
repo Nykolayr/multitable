@@ -11,6 +11,7 @@ class AppColor {
   static const Color meddleGrey = Color(0xFF5A5954);
   static const Color darkgrey = Color(0xFF050505);
   static const Color redDark = Color(0xFF470404);
+  static const Color green = Color(0xFF5FB56A);
   static const LinearGradient gradDark = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

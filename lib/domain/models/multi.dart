@@ -3,57 +3,87 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:multitable/utils/value.dart';
 
+enum StatusInfo { normal, help, error }
+
 class Multi {
+  List<List<int>> erorr = [];
+  int doError = 2;
+  bool isLong = false;
+  StatusInfo status = StatusInfo.normal;
   int _operQuest1 = 2;
   int _operQuest2 = 2;
   int _operAnswer1 = 2;
   int _operAnswer2 = 2;
-  String userAnswer = '';
   String answer = '';
   final String _signMult = '\u{00D7}'; // знак умножения
   final String _zap = tr('remember');
   setOper(List<int> oper) {
+    print('console $oper');
     _operAnswer1 = oper[0];
     _operAnswer2 = oper[1];
+    _operQuest1 = oper[0];
+    _operQuest2 = oper[1];
     if (oper.length > 2) {
-      _operQuest1 = oper[0];
-      _operQuest2 = oper[1];
+      answer = strZap();
+    } else {
+      answer = tr('enter_answer');
     }
-    answer = '${rezult()}';
+    
   }
 
   Multi(int step) {
     setStep(step);
   }
 
+  void setError(String userAnswer) {
+    status = StatusInfo.error;
+    answer = userAnswer + tr('incorrect');
+    doError = 2;
+    erorr.add([_operQuest1, _operQuest2]);
+  }
+
+  void help() {
+    status = StatusInfo.help;
+    answer = tr('right_answer') + ' ${rezult()}';
+  }
+
+  void right() {
+    status = StatusInfo.help;
+    answer = tr('right');
+  }
+
   setStep(int step) {
+    status = StatusInfo.normal;
     setOper(partsList[step]);
   }
 
   //возращает результат умножения
-  rezult() {
+  int rezult() {
     return _operAnswer1 * _operAnswer2;
   }
 
   //возращает строку с умножением
-  strQuest() {
+  String strQuest() {
     return '$_operAnswer1 $_signMult $_operAnswer2 = ';
   }
 
 //возращает строку с умножением и ответом
-  strAnswer() {
+  String strAnswer() {
     String lt = rezult().toString();
     return '$_operAnswer1 $_signMult $_operAnswer2 = $lt';
   }
 
   //возращает строку с умножением и результатом в запомни
-  strZap() {
+  String strZap() {
     String ret = _zap;
     String lt = rezult().toString();
+    if (_operQuest1 != _operQuest2) ret += '\n';
     ret += ' $_operQuest1 $_signMult $_operQuest2 = $lt';
+    isLong = _operQuest1 != _operQuest2;
     if (_operQuest1 != _operQuest2) {
       ret += ' и $_operQuest2 $_signMult $_operQuest1 = $lt';
     }
+
     return ret;
   }
 }

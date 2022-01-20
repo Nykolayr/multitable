@@ -5,7 +5,10 @@
    "guest": "Guest",
    "attention": "Attention",
    "right_answer": "Right answer:",
-   "incorrect": "incorrect",
+   "incorrect": " - incorrect",
    "remember": "Remember:",
-   "and": "and "
+   "and": "and ",
+   "check": "Check",
+   "right": "RIGHT!",
+   "enter_answer": "Enter the answer"
 }
