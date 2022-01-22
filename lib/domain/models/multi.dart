@@ -6,19 +6,25 @@ import 'package:multitable/utils/value.dart';
 enum StatusInfo { normal, help, error }
 
 class Multi {
+  // массив ошибок
   List<List<int>> erorr = [];
+  // сколько осталось ответов до того, когда надо взять из массива ошибок
   int doError = 2;
+  // длинный вопрос или нет
   bool isLong = false;
+  // статус надписи {normal, help, error} по существу цвет
   StatusInfo status = StatusInfo.normal;
+  // операнды в воросе и информационной надписи
   int _operQuest1 = 2;
   int _operQuest2 = 2;
   int _operAnswer1 = 2;
   int _operAnswer2 = 2;
+  //
   String answer = '';
   final String _signMult = '\u{00D7}'; // знак умножения
   final String _zap = tr('remember');
+  // установка операндов
   setOper(List<int> oper) {
-    print('console $oper');
     _operAnswer1 = oper[0];
     _operAnswer2 = oper[1];
     _operQuest1 = oper[0];
@@ -28,13 +34,12 @@ class Multi {
     } else {
       answer = tr('enter_answer');
     }
-    
   }
 
   Multi(int step) {
     setStep(step);
   }
-
+// ошибка
   void setError(String userAnswer) {
     status = StatusInfo.error;
     answer = userAnswer + tr('incorrect');
@@ -42,16 +47,19 @@ class Multi {
     erorr.add([_operQuest1, _operQuest2]);
   }
 
+// подсказка
   void help() {
     status = StatusInfo.help;
     answer = tr('right_answer') + ' ${rezult()}';
   }
 
+// надпись правильно
   void right() {
     status = StatusInfo.help;
     answer = tr('right');
   }
 
+// следующий шаг
   setStep(int step) {
     status = StatusInfo.normal;
     setOper(partsList[step]);

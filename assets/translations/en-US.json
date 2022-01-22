@@ -10,5 +10,10 @@
    "and": "and ",
    "check": "Check",
    "right": "RIGHT!",
-   "enter_answer": "Enter the answer"
+   "enter_answer": "Enter the answer",
+   "congratulations": "Congratulations!",
+   "learn": "You have learned the multiplication table! You can see the statistics on the <Achievements> page",
+   "again": "Would you like to go through the multiplication table again?",
+   "yes": "Yes",
+   "no": "No"
 }

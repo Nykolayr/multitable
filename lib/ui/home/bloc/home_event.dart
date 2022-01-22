@@ -17,3 +17,5 @@ class PressHelp extends HomeEvent {}
 class PressDel extends HomeEvent {}
 
 class PressEnter extends HomeEvent {}
+class PressYes extends HomeEvent {}
+class PressNo extends HomeEvent {}
