@@ -1,7 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/ui/widgets/widgets.dart';
 import 'package:multitable/utils/colors.dart';
+import 'package:provider/src/provider.dart';
+
+import 'dialogs.dart';
 
 class AppBarWithIcon extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -52,7 +57,14 @@ class AppBarWithIcon extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: isIcon
           ? [
-              Widgets.iconAction("assets/icon/restart.svg", () => {}),
+              Widgets.iconAction("assets/icon/restart.svg", () async {
+                bool isDialog = await showModalBottomSheetbool(
+                  context,
+                  tr('attention') + '!',
+                  tr('want_start'),
+                );
+                if (isDialog) context.read<HomeBloc>().add(PressYes());
+              }),
               Widgets.iconAction("assets/icon/user.svg", () => {}),
             ]
           : [],

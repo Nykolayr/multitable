@@ -7,7 +7,7 @@ enum StatusInfo { normal, help, error }
 
 class Multi {
   // массив ошибок
-  List<List<int>> erorr = [];
+  List erorr = [];
   // сколько осталось ответов до того, когда надо взять из массива ошибок
   int doError = 2;
   // длинный вопрос или нет

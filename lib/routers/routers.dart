@@ -35,7 +35,10 @@ List<BartMenuRoute> subRoutes() {
       label: tr('progress'),
       icon: Icons.emoji_events_outlined,
       path: '/progress',
-      pageBuilder: (contextn, settings) => const ProgressPage(),
+      pageBuilder: (context, settings) => BlocProvider(
+        create: (_) => HomeBloc(context.read<UserRepository>()),
+        child: const ProgressPage(),
+      ),
     ),
     BartMenuRoute.bottomBar(
       label: tr('profile'),

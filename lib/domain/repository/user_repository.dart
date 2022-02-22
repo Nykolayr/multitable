@@ -23,7 +23,7 @@ class UserRepository {
   // среднее время ответа
   double averegeAnswer = 0;
   // массив ошибок
-  List<List<int>> errorList = [];
+  List errorList = [];
   UserRepository._();
 
   static Future<UserRepository> create() async {

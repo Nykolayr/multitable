@@ -15,5 +15,12 @@
    "learn": "You have learned the multiplication table! You can see the statistics on the <Achievements> page",
    "again": "Would you like to go through the multiplication table again?",
    "yes": "Yes",
-   "no": "No"
+   "no": "No",
+   "want_start": "Are you sure you want to start over?",
+   "сorrect_answers": "Correct answers: ",
+   "errors": "Ошибок: ",
+   "hints": "Hints: ",
+   "average_time": "Average response time: ",
+   "мedals": "Medals: ",
+   "statistics": "All - time statistics"
 }

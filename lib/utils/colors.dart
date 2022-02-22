@@ -28,4 +28,7 @@ class AppColor {
     colors: [red, redDark],
   );
   static Border border = Border.all(width: 1, color: meddleGrey);
+  static const BorderRadius borderRadiusTop15 = BorderRadius.vertical(
+    top: Radius.circular(15),
+  );
 }

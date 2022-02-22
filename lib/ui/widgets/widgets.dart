@@ -128,4 +128,28 @@ class Widgets {
       ),
     );
   }
+
+  static Widget buttonDialog(String title, Function callBack) {
+    return GestureDetector(
+      onTap: () => callBack(title),
+      child: Container(
+        height: 40,
+        width: 120,
+        decoration: BoxDecoration(
+          gradient: AppColor.gradBlue,
+          borderRadius: BorderRadius.circular(10),
+          border: AppColor.border,
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+    );
+  }
 }
