@@ -3,12 +3,9 @@ import 'package:bart/bart/bart_scaffold.dart';
 import 'package:bart/bart/bottom_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multitable/domain/repository/user_repository.dart';
-import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/ui/home/home.dart';
 import 'package:multitable/ui/profile/profile.dart';
-import 'package:multitable/ui/progress/progress.dart';
+import 'package:multitable/ui/statistics/statistics.dart';
 import 'package:multitable/utils/colors.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -25,20 +22,14 @@ List<BartMenuRoute> subRoutes() {
       label: tr('training'),
       icon: Icons.home,
       path: '/training',
-      pageBuilder: (context, settings) => BlocProvider(
-        create: (_) => HomeBloc(context.read<UserRepository>()),
-        child: const HomePage(),
-      ),
+      pageBuilder: (context, settings) => const HomePage(),
     ),
     BartMenuRoute.bottomBar(
       cache: true,
-      label: tr('progress'),
+      label: tr('statistics'),
       icon: Icons.emoji_events_outlined,
-      path: '/progress',
-      pageBuilder: (context, settings) => BlocProvider(
-        create: (_) => HomeBloc(context.read<UserRepository>()),
-        child: const ProgressPage(),
-      ),
+      path: '/statistics',
+      pageBuilder: (context, settings) => const ProgressPage(),
     ),
     BartMenuRoute.bottomBar(
       label: tr('profile'),
@@ -53,7 +44,8 @@ Route<dynamic> routes(RouteSettings settings) {
   switch (settings.name) {
     case '/':
       return MaterialPageRoute(
-          builder: (_) => const MainPageMenu(routesBuilder: subRoutes));
+        builder: (_) => const MainPageMenu(routesBuilder: subRoutes),
+      );
     default:
       throw 'unexpected Route';
   }

@@ -32,3 +32,46 @@ class AppColor {
     top: Radius.circular(15),
   );
 }
+
+class AppText {
+  static const TextStyle textYellow30 = TextStyle(
+    color: AppColor.yellow,
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
+  );
+  static const TextStyle textYellow18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AppColor.yellow,
+  );
+  static const TextStyle textDarkBlue18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AppColor.darkBlue,
+  );
+  static const TextStyle textRed24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: AppColor.red,
+  );
+  static const TextStyle textWhite18 = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.normal,
+    fontSize: 18,
+  );
+  static const TextStyle textDarkgrey50 = TextStyle(
+    color: AppColor.darkgrey,
+    fontWeight: FontWeight.bold,
+    fontSize: 50,
+  );
+  static const TextStyle textWhite42 = TextStyle(
+    color: Colors.white,
+    fontSize: 42,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle textWhite22 = TextStyle(
+    color: Colors.white,
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+}

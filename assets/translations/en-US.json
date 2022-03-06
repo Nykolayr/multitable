@@ -22,5 +22,9 @@
    "hints": "Hints: ",
    "average_time": "Average response time: ",
    "мedals": "Medals: ",
-   "statistics": "All - time statistics"
+   "statistics": "Statistics",
+   "statistics_all": "All - time statistics",
+   "now_statistics": "Current statistics",
+   "мedals_all": "Total medals:",
+   "settings": "Settings"
 }

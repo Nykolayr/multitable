@@ -16,12 +16,20 @@ class UserRepository {
   int trueAnswer = 0;
   // количество неправильных ответов
   int falseAnswer = 0;
-  // сколько осталось ответов до того, когда надо взять из массива ошибок
-  int doError = 2;
   // сколько было подсказок
   int hintCount = 0;
   // среднее время ответа
   double averegeAnswer = 0;
+  // количество правильных ответов общее
+  int trueAnswerAll = 0;
+  // количество неправильных ответов общее
+  int falseAnswerAll = 0;
+  // сколько было подсказок общее
+  int hintCountAll = 0;
+  // среднее время ответа общее
+  double averegeAnswerAll = 0;
+  // сколько осталось ответов до того, когда надо взять из массива ошибок
+  int doError = 2;
   // массив ошибок
   List errorList = [];
   UserRepository._();
@@ -47,6 +55,10 @@ class UserRepository {
         falseAnswer = json['falseAnswer'],
         hintCount = json['hintCount'],
         averegeAnswer = json['averegeAnswer'],
+        trueAnswerAll = json['trueAnswerAll'],
+        falseAnswerAll = json['falseAnswerAll'],
+        hintCountAll = json['hintCountAll'],
+        averegeAnswerAll = json['averegeAnswerAll'],
         errorList = json['errorList'],
         doError = json['doError'];
 
@@ -60,6 +72,10 @@ class UserRepository {
         'falseAnswer': falseAnswer,
         'hintCount': hintCount,
         'averegeAnswer': averegeAnswer,
+        'trueAnswerAll': trueAnswerAll,
+        'falseAnswerAll': falseAnswerAll,
+        'hintCountAll': hintCountAll,
+        'averegeAnswerAll': averegeAnswerAll,
         'errorList': errorList,
         'doError': doError,
       };
@@ -71,16 +87,19 @@ class UserRepository {
     errorList.add(list);
     doError = errorDo;
     falseAnswer++;
+    falseAnswerAll++;
     saveUser();
   }
 
   addHint() {
     hintCount++;
+    hintCountAll++;
     saveUser();
   }
 
   setTrueAnswer() {
     trueAnswer++;
+    trueAnswerAll++;
     saveUser();
   }
 
@@ -89,20 +108,21 @@ class UserRepository {
     step = 0;
     errorList = [];
     doError = 2;
+    trueAnswer = 0;
+    falseAnswer = 0;
+    hintCount = 0;
+    averegeAnswer = 0;
     saveUser();
   }
 
   clearUser() {
     userName = 'Guest';
-    lang = 'ru';
     token = '';
-    step = 0;
     medal = 0;
-    trueAnswer = 0;
-    falseAnswer = 0;
-    hintCount = 0;
-    averegeAnswer = 0;
-    errorList = [];
-    LocalData().saveJson(toJson());
+    trueAnswerAll = 0;
+    falseAnswerAll = 0;
+    hintCountAll = 0;
+    averegeAnswerAll = 0;
+    reset();
   }
 }

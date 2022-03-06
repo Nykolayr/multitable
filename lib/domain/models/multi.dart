@@ -24,7 +24,7 @@ class Multi {
   final String _signMult = '\u{00D7}'; // знак умножения
   final String _zap = tr('remember');
   // установка операндов
-  setOper(List<int> oper) {
+  setOper(List oper) {
     _operAnswer1 = oper[0];
     _operAnswer2 = oper[1];
     _operQuest1 = oper[0];

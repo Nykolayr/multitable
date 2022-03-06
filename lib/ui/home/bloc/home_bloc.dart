@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:multitable/domain/models/multi.dart';
@@ -9,32 +11,39 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   late final UserRepository userRepository;
-  late int step;
   late Multi multi;
   late String userAnswer;
+  Secundomer secundomer = Secundomer();
   bool isEndStep = false;
   bool isEnd = false;
   HomeBloc(this.userRepository) : super(HomeWaiting()) {
-    step = userRepository.step;
-    multi = Multi(step);
+    multi = Multi(userRepository.step);
     userAnswer = '';
     multi.doError = userRepository.doError;
     multi.erorr = userRepository.errorList;
     checkEnd() {
-      if (partsList.length - 1 != step) {
-        step++;
-        multi.setStep(step);
+      if (partsList.length - 1 != userRepository.step) {
+        userRepository.step++;
+        multi.setStep(userRepository.step);
       } else {
         isEndStep = true;
+        userRepository.medal++;
       }
     }
 
+    secundomer.run();
     on<HomeEvent>((event, emit) async {
-      if (event is PressYes) {
-        step = 0;
+      if (event is PressNo) {
         isEndStep = false;
         userRepository.reset();
-        multi.setStep(step);
+        multi.setStep(userRepository.step);
+        isEnd = false;
+        emit(StatePress());
+      }
+      if (event is PressYes) {
+        isEndStep = false;
+        userRepository.reset();
+        multi.setStep(userRepository.step);
         isEnd = false;
         emit(StatePress());
       }
@@ -58,7 +67,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
       if (event is PressEnter) {
         if (userAnswer.isEmpty) return;
-
+        int time = secundomer.stop().inMilliseconds;
         if (int.parse(userAnswer) == multi.rezult()) {
           userRepository.setTrueAnswer();
           multi.right();
@@ -86,12 +95,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             });
           } else {
             userRepository.doError++;
-            userRepository.saveUser();
           }
         }
         if (isEndStep && multi.erorr.isEmpty) isEnd = true;
+        userRepository.averegeAnswer += time / 1000;
+        userRepository.averegeAnswerAll += time / 1000;
+        userRepository.saveUser();
+        secundomer.run();
       }
       emit(HomeWaiting());
     });
+  }
+}
+
+class Secundomer {
+  late DateTime _initialTime;
+  Timer? _timer;
+  Duration _elapsed = Duration.zero;
+  run() {
+    _initialTime = DateTime.now();
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (_) {
+      final now = DateTime.now();
+      _elapsed = now.difference(_initialTime);
+    });
+  }
+
+  Duration stop() {
+    _timer!.cancel();
+
+    return _elapsed;
   }
 }

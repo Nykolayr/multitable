@@ -1,7 +1,7 @@
 part of 'home_bloc.dart';
 
 abstract class HomeState extends Equatable {
-  const HomeState([int step = 0]);
+  const HomeState();
 
   @override
   List<Object> get props => [];

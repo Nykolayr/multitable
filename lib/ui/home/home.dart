@@ -84,22 +84,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Text(
                       tr('congratulations'),
-                      style: const TextStyle(
-                        color: AppColor.yellow,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                      ),
+                      style: AppText.textYellow30,
                     ),
                     const SizedBox(
                       height: 30,
                     ),
                     Text(
                       tr('learn'),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 18,
-                      ),
+                      style: AppText.textWhite18,
                     ),
                     const SizedBox(
                       height: 70,
@@ -107,11 +99,7 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       tr('again'),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
+                      style: AppText.textWhite18,
                     ),
                     const SizedBox(
                       height: 40,
@@ -137,7 +125,8 @@ class _HomePageState extends State<HomePage> {
                       height: 10,
                     ),
                     Widgets.progressBar(
-                        ((_homeBloc.step * 100) / (partsList.length - 1))
+                        ((_homeBloc.userRepository.step * 100) /
+                                (partsList.length - 1))
                             .floor(),
                         context),
                     const SizedBox(
@@ -166,11 +155,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: Text(
                         '${_multi.strQuest()}${_homeBloc.userAnswer} ',
-                        style: const TextStyle(
-                          color: AppColor.darkgrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 50,
-                        ),
+                        style: AppText.textDarkgrey50,
                       ),
                     ),
                     const SizedBox(height: 30),

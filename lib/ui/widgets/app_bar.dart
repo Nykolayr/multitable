@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/ui/widgets/widgets.dart';
 import 'package:multitable/utils/colors.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 
 import 'dialogs.dart';
@@ -65,7 +66,15 @@ class AppBarWithIcon extends StatelessWidget implements PreferredSizeWidget {
                 );
                 if (isDialog) context.read<HomeBloc>().add(PressYes());
               }),
-              Widgets.iconAction("assets/icon/user.svg", () => {}),
+              // TODO icon profilepage
+              // Widgets.iconAction(
+              //   "assets/icon/user.svg",
+              //   () => Navigator.of(context).push(
+              //     MaterialPageRoute(
+              //       builder: (BuildContext context) => const ProfilePage(),
+              //     ),
+              //   ),
+              // ),
             ]
           : [],
       elevation: 5,

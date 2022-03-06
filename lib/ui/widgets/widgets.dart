@@ -17,7 +17,6 @@ class Widgets {
           Align(
             child: Text(
               '$procent%',
-              // textAlign: TextAlign.center,
               style: TextStyle(
                   color: (procent < 51) ? AppColor.darkgrey : Colors.white,
                   fontSize: 18,
@@ -44,11 +43,7 @@ class Widgets {
         alignment: Alignment.center,
         child: Text(
           '$cifra',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 42,
-            fontWeight: FontWeight.w600,
-          ),
+          style: AppText.textWhite42,
         ),
       ),
     );
@@ -95,11 +90,7 @@ class Widgets {
               )
             : Text(
                 sign,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 42,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppText.textWhite42,
               ),
       ),
     );
@@ -117,14 +108,7 @@ class Widgets {
           border: AppColor.border,
         ),
         alignment: Alignment.center,
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        child: Text(text, style: AppText.textWhite22),
       ),
     );
   }
@@ -143,11 +127,7 @@ class Widgets {
         alignment: Alignment.center,
         child: Text(
           title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
+          style: AppText.textWhite18,
         ),
       ),
     );

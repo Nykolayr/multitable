@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multitable/routers/routers.dart';
+import 'package:multitable/ui/home/bloc/home_bloc.dart';
 
 import 'domain/repository/user_repository.dart';
 
@@ -17,7 +18,10 @@ void main() async {
       startLocale: const Locale('ru', 'RU'),
       child: RepositoryProvider(
         create: (context) => userRepository,
-        child: const MyApp(),
+        child: BlocProvider(
+          create: (_) => HomeBloc(userRepository),
+          child: const MyApp(),
+        ),
       ),
     ),
   );
