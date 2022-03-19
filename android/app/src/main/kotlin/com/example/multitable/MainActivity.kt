@@ -1,4 +1,4 @@
-package com.example.multitable
+package com.matematics.multitable
 
 import io.flutter.embedding.android.FlutterActivity
 
