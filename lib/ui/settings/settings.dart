@@ -46,15 +46,14 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             GestureDetector(
               onTap: () async {
-                bool isDialog = await showModalBottomSheet(
-                      enableDrag: true,
-                      isScrollControlled: true,
-                      isDismissible: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) => dialogLang(context, _settingsBloc),
-                    ) ??
-                    false;
+                await showModalBottomSheet(
+                  enableDrag: true,
+                  isScrollControlled: true,
+                  isDismissible: true,
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (context) => dialogLang(context, _settingsBloc),
+                );
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(
