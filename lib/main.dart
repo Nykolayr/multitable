@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multitable/routers/routers.dart';
 import 'package:multitable/ui/home/bloc/home_bloc.dart';
+import 'package:multitable/utils/value.dart';
 
 import 'domain/repository/user_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  UserRepository userRepository = await UserRepository.create();
+  userRepository = await UserRepository.create();
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('ru', 'RU'), Locale('en', 'US')],
@@ -26,14 +27,18 @@ void main() async {
     ),
   );
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({
-    Key? key,
-  }) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
+    context.watch<HomeBloc>();
+    print('object === main');
     return MaterialApp(
       title: 'multitable',
       debugShowCheckedModeBanner: false,

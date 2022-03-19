@@ -7,6 +7,10 @@ abstract class SettingsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PressLang extends SettingsEvent {}
+class PressLang extends SettingsEvent {
+  final String lang;
+
+  const PressLang(this.lang);
+}
 
 class PressTheme extends SettingsEvent {}

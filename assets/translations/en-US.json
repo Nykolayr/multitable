@@ -18,7 +18,7 @@
    "no": "No",
    "want_start": "Are you sure you want to start over?",
    "сorrect_answers": "Correct answers: ",
-   "errors": "Ошибок: ",
+   "errors": "Errors: ",
    "hints": "Hints: ",
    "average_time": "Average response time: ",
    "мedals": "Medals: ",
@@ -26,5 +26,9 @@
    "statistics_all": "All - time statistics",
    "now_statistics": "Current statistics",
    "мedals_all": "Total medals:",
-   "settings": "Settings"
+   "settings": "Settings",
+   "change_lang": "Select a language:",
+   "lang": "Application language",
+   "russian": "Russian",
+   "english": "English"
 }

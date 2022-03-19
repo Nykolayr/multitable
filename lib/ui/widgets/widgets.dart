@@ -1,8 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:multitable/utils/colors.dart';
 
 class Widgets {
+  static Widget lineSwitch(
+      {required String title,
+      required String body,
+      required bool isSwitch,
+      required Function setSwitch}) {
+    return Column(
+      children: [
+        const SizedBox(
+          height: 24,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        color: AppColor.yellow,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  (body == '')
+                      ? const SizedBox.shrink()
+                      : Text(
+                          body,
+                          style: const TextStyle(
+                              color: AppColor.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400),
+                        ),
+                ],
+              ),
+            ),
+            switcherWidget(isSwitch, setSwitch),
+          ],
+        ),
+      ],
+    );
+  }
+
+  static Widget switcherWidget(bool isActive, Function setActive) {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 16,
+      ),
+      color: Colors.transparent,
+      child: FlutterSwitch(
+          activeColor: AppColor.darkBlue,
+          inactiveColor: AppColor.lightBlue,
+          activeToggleColor: AppColor.white,
+          inactiveToggleColor: AppColor.darkBlue,
+          width: 40.0,
+          height: 24.0,
+          toggleSize: 16.0,
+          value: isActive,
+          borderRadius: 100.0,
+          padding: 4.0,
+          onToggle: (val) {
+            setActive();
+          }),
+    );
+  }
+
   static Widget progressBar(int procent, BuildContext context) {
     return Container(
       color: AppColor.yellow,

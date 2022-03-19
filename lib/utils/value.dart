@@ -1,5 +1,7 @@
+import 'package:multitable/domain/repository/user_repository.dart';
 import 'package:ocarina/ocarina.dart';
 
+late UserRepository userRepository;
 // звуки для приложения
 late OcarinaPlayer click, positiv, negativ, end;
 begin() async {

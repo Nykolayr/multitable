@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 30),
                     Text(
-                      _multi.answer,
+                      _homeBloc.answer,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: colors[_multi.status.index],

@@ -91,7 +91,6 @@ class Multi {
     if (_operQuest1 != _operQuest2) {
       ret += ' и $_operQuest2 $_signMult $_operQuest1 = $lt';
     }
-
     return ret;
   }
 }

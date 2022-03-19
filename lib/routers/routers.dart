@@ -3,10 +3,13 @@ import 'package:bart/bart/bart_scaffold.dart';
 import 'package:bart/bart/bottom_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multitable/ui/home/home.dart';
-import 'package:multitable/ui/profile/profile.dart';
+import 'package:multitable/ui/settings/bloc/settings_bloc.dart';
+import 'package:multitable/ui/settings/settings.dart';
 import 'package:multitable/ui/statistics/statistics.dart';
 import 'package:multitable/utils/colors.dart';
+import 'package:multitable/utils/value.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -32,10 +35,13 @@ List<BartMenuRoute> subRoutes() {
       pageBuilder: (context, settings) => const ProgressPage(),
     ),
     BartMenuRoute.bottomBar(
-      label: tr('profile'),
+      label: tr('settings'),
       icon: Icons.settings,
-      path: '/Profile',
-      pageBuilder: (context, settings) => const ProfilePage(),
+      path: '/settings',
+      pageBuilder: (context, settings) => BlocProvider(
+        create: (_) => SettingsBloc(userRepository),
+        child: const SettingsPage(),
+      ),
     ),
   ];
 }
