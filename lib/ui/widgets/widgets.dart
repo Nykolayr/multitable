@@ -12,7 +12,7 @@ class Widgets {
     return Column(
       children: [
         const SizedBox(
-          height: 24,
+          height: 36,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,10 +54,10 @@ class Widgets {
       ),
       color: Colors.transparent,
       child: FlutterSwitch(
-          activeColor: AppColor.darkBlue,
+          activeColor: AppColor.darkBroun,
           inactiveColor: AppColor.lightBlue,
           activeToggleColor: AppColor.white,
-          inactiveToggleColor: AppColor.darkBlue,
+          inactiveToggleColor: AppColor.darkBroun,
           width: 40.0,
           height: 24.0,
           toggleSize: 16.0,

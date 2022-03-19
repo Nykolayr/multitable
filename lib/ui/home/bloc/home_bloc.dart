@@ -27,13 +27,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       } else {
         isEndStep = true;
         userRepository.medal++;
+        if (userRepository.sound) end.play();
+        Future.delayed(const Duration(milliseconds: 2500), () {
+          end.stop();
+        });
       }
     }
 
     secundomer.run();
     on<HomeEvent>((event, emit) async {
       if (event is PressLangStat) {
-        multi.setStep(userRepository.step);
+        await Future.delayed(const Duration(milliseconds: 300), () {});
+        multi = Multi(userRepository.step);
         emit(StatePress());
       }
       if (event is PressNo) {
@@ -56,16 +61,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           return;
         }
         userAnswer += '${event.cifra}';
+        if (userRepository.sound) click.play();
         emit(StatePress());
       }
       if (event is PressDel) {
         if (userAnswer.isEmpty) return;
         userAnswer = userAnswer.substring(0, userAnswer.length - 1);
+        if (userRepository.sound) click.play();
         emit(StatePress());
       }
       if (event is PressHelp) {
         multi.help();
         userRepository.addHint();
+        if (userRepository.sound) click.play();
         emit(StatePress());
       }
       if (event is PressEnter) {
@@ -75,6 +83,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           userRepository.setTrueAnswer();
           multi.right();
           emit(StatePress());
+          if (userRepository.sound) positiv.play();
           await Future.delayed(const Duration(seconds: 2), () {
             if (multi.erorr.isNotEmpty) multi.doError--;
             if (isEndStep) multi.doError = 0;
@@ -88,6 +97,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             userAnswer = '';
           });
         } else {
+          if (userRepository.sound) negativ.play();
           if (!isEndStep) {
             multi.setError(userAnswer);
             userRepository.addErrorList(multi.erorr.last, multi.doError);
@@ -106,6 +116,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         userRepository.saveUser();
         secundomer.run();
       }
+      if (userRepository.sound) positiv.stop();
+      if (userRepository.sound) negativ.stop();
       emit(HomeWaiting());
     });
   }

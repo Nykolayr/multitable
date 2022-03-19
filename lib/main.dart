@@ -9,6 +9,7 @@ import 'domain/repository/user_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  begin();
   await EasyLocalization.ensureInitialized();
   userRepository = await UserRepository.create();
   runApp(
@@ -28,17 +29,13 @@ void main() async {
   );
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    context.watch<HomeBloc>();
     return MaterialApp(
       title: 'multitable',
       debugShowCheckedModeBanner: false,

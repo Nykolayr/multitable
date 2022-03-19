@@ -43,4 +43,5 @@ flutter:
   assets:
     - assets/
     - assets/icon/
+    - assets/sound/
     - assets/translations/

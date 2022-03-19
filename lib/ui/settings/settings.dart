@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:multitable/ui/settings/bloc/settings_bloc.dart';
 import 'package:multitable/ui/widgets/app_bar.dart';
 import 'package:multitable/ui/widgets/dialogs.dart';
+import 'package:multitable/ui/widgets/widgets.dart';
 import 'package:multitable/utils/colors.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
@@ -21,6 +22,10 @@ class _SettingsPageState extends State<SettingsPage> {
   void initState() {
     _settingsBloc = context.read<SettingsBloc>();
     super.initState();
+  }
+
+  setSound() {
+    _settingsBloc.add(PressSound());
   }
 
   @override
@@ -42,7 +47,7 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 24,
+              height: 36,
             ),
             GestureDetector(
               onTap: () async {
@@ -86,6 +91,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   ],
                 ),
               ),
+            ),
+            Widgets.lineSwitch(
+              title: tr('sound'),
+              body: '',
+              isSwitch: _settingsBloc.isSound,
+              setSwitch: setSound,
             ),
           ],
         ),

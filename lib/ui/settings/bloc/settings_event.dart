@@ -14,3 +14,5 @@ class PressLang extends SettingsEvent {
 }
 
 class PressTheme extends SettingsEvent {}
+
+class PressSound extends SettingsEvent {}

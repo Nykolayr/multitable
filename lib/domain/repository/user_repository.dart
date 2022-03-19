@@ -8,6 +8,7 @@ class UserRepository {
   String lang = 'ru';
   // токен для последующих возможностей
   String token = '';
+  bool sound = true;
   // шаг ответов
   int step = 0;
   // сколько медалей за проейденые
@@ -48,6 +49,7 @@ class UserRepository {
   UserRepository.fromJson(Map<String, dynamic> json)
       : userName = json['userName'],
         lang = json['lang'],
+        sound = json['sound'],
         token = json['token'],
         step = json['step'],
         medal = json['medal'],
@@ -65,6 +67,7 @@ class UserRepository {
   Map<String, dynamic> toJson() => {
         'userName': userName,
         'lang': lang,
+        'sound': sound,
         'token': token,
         'step': step,
         'medal': medal,

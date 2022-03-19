@@ -7,11 +7,19 @@ part 'settings_event.dart';
 part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  late final UserRepository userRepository;
+  late UserRepository userRepository;
   late String lang;
+  late bool isSound;
   SettingsBloc(this.userRepository) : super(SettingsWaiting()) {
     lang = getTextLang(userRepository.lang);
+    isSound = userRepository.sound;
     on<SettingsEvent>((event, emit) async {
+      if (event is PressSound) {
+        isSound = !isSound;
+        userRepository.sound = isSound;
+        userRepository.saveUser();
+        emit(SettingsPress());
+      }
       if (event is PressLang) {
         userRepository.lang = event.lang;
         lang = getTextLang(userRepository.lang);
