@@ -4,6 +4,7 @@ import 'package:bart/bart/bottom_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/ui/home/home.dart';
 import 'package:multitable/ui/settings/bloc/settings_bloc.dart';
 import 'package:multitable/ui/settings/settings.dart';
@@ -22,7 +23,7 @@ Future appPushNamed(String route, {Object? arguments}) =>
 List<BartMenuRoute> subRoutes() {
   return [
     BartMenuRoute.bottomBar(
-      label: tr('training'),
+      label: tr("training"),
       icon: Icons.home,
       path: '/training',
       pageBuilder: (context, settings) => const HomePage(),
@@ -57,15 +58,20 @@ Route<dynamic> routes(RouteSettings settings) {
   }
 }
 
-class MainPageMenu extends StatelessWidget {
+class MainPageMenu extends StatefulWidget {
   final BartRouteBuilder routesBuilder;
-
   const MainPageMenu({Key? key, required this.routesBuilder}) : super(key: key);
 
   @override
+  State<MainPageMenu> createState() => _MainPageMenuState();
+}
+
+class _MainPageMenuState extends State<MainPageMenu> {
+  @override
   Widget build(BuildContext context) {
+    context.watch<HomeBloc>();
     return BartScaffold(
-      routesBuilder: routesBuilder,
+      routesBuilder: widget.routesBuilder,
       navigatorObservers: [routeObserver],
       bottomBar: BartBottomBar.fromFactory(
         elevation: 10,

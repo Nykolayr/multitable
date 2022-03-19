@@ -27,6 +27,7 @@ void main() async {
     ),
   );
 }
+
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -38,7 +39,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     context.watch<HomeBloc>();
-    print('object === main');
     return MaterialApp(
       title: 'multitable',
       debugShowCheckedModeBanner: false,

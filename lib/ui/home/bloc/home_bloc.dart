@@ -12,14 +12,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   late final UserRepository userRepository;
   late Multi multi;
   late String userAnswer;
-  late String answer;
   Secundomer secundomer = Secundomer();
   bool isEndStep = false;
   bool isEnd = false;
   HomeBloc(this.userRepository) : super(HomeWaiting()) {
     multi = Multi(userRepository.step);
     userAnswer = '';
-    answer = '';
     multi.doError = userRepository.doError;
     multi.erorr = userRepository.errorList;
     checkEnd() {
@@ -33,10 +31,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
 
     secundomer.run();
-    answer = multi.answer;
     on<HomeEvent>((event, emit) async {
       if (event is PressLangStat) {
-        print('object === run');
+        multi.setStep(userRepository.step);
         emit(StatePress());
       }
       if (event is PressNo) {
@@ -102,7 +99,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           } else {
             userRepository.doError++;
           }
-          answer = multi.answer;
         }
         if (isEndStep && multi.erorr.isEmpty) isEnd = true;
         userRepository.averegeAnswer += time / 1000;
