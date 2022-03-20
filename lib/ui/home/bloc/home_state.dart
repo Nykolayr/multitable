@@ -7,10 +7,6 @@ abstract class HomeState extends Equatable {
   List<Object> get props => [];
 }
 
-class HomeInitial extends HomeState {}
+class HomeWaiting extends HomeState {}
 
-class NextStep extends HomeState {
-  final String question;
-  final String questionBottom;
-  const NextStep(this.question, this.questionBottom);
-}
+class StatePress extends HomeState {}

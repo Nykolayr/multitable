@@ -1,32 +1,31 @@
-import 'package:multitable/repository/user_repository.dart';
+import 'package:multitable/domain/repository/user_repository.dart';
 import 'package:ocarina/ocarina.dart';
 
 late UserRepository userRepository;
-
 // звуки для приложения
 late OcarinaPlayer click, positiv, negativ, end;
 begin() async {
   //загрузка звуков
   click = OcarinaPlayer(
-    asset: 'assets/send.mp3',
+    asset: 'assets/sound/click.mp3',
     loop: false,
     volume: 0.9,
   );
   await click.load();
   positiv = OcarinaPlayer(
-    asset: 'assets/recive.mp3',
+    asset: 'assets/sound/positiv.mp3',
     loop: false,
     volume: 0.9,
   );
   await positiv.load();
   negativ = OcarinaPlayer(
-    asset: 'assets/phone.mp3',
+    asset: 'assets/sound/negativ.mp3',
     loop: true,
     volume: 0.9,
   );
   await negativ.load();
   end = OcarinaPlayer(
-    asset: 'assets/phone.mp3',
+    asset: 'assets/sound/end.mp3',
     loop: true,
     volume: 0.9,
   );

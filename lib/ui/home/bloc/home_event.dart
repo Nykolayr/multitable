@@ -7,4 +7,19 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class InitialEvent extends HomeEvent {}
+class PressCifra extends HomeEvent {
+  final int cifra;
+  const PressCifra(this.cifra);
+}
+
+class PressHelp extends HomeEvent {}
+
+class PressDel extends HomeEvent {}
+
+class PressEnter extends HomeEvent {}
+
+class PressYes extends HomeEvent {}
+
+class PressNo extends HomeEvent {}
+
+class PressLangStat extends HomeEvent {}

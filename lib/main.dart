@@ -1,28 +1,37 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:multitable/repository/user_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multitable/routers/routers.dart';
+import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/utils/value.dart';
+
+import 'domain/repository/user_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  begin();
   await EasyLocalization.ensureInitialized();
   userRepository = await UserRepository.create();
-  runApp(EasyLocalization(
+  runApp(
+    EasyLocalization(
       supportedLocales: const [Locale('ru', 'RU'), Locale('en', 'US')],
       path: 'assets/translations',
       fallbackLocale: const Locale('ru', 'RU'),
       startLocale: const Locale('ru', 'RU'),
-      child: MyApp(
-        userRepository: userRepository,
-      )));
+      child: RepositoryProvider(
+        create: (context) => userRepository,
+        child: BlocProvider(
+          create: (_) => HomeBloc(userRepository),
+          child: const MyApp(),
+        ),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  final UserRepository userRepository;
   const MyApp({
     Key? key,
-    required this.userRepository,
   }) : super(key: key);
 
   @override
