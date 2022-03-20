@@ -12,15 +12,13 @@ void main() async {
   begin();
   await EasyLocalization.ensureInitialized();
   userRepository = await UserRepository.create();
-  List<String> locale = Platform.localeName.split('_');
-  print('Platform.localeName = ${Platform.localeName}');
-  print('Platform.localeName = ${locale[0]}=${locale[1]}');
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('ru', 'RU'), Locale('en', 'US')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en', 'US'),
-      startLocale: Locale(locale[0], locale[1]),
+      startLocale: Locale(
+          Platform.localeName.split('_')[0], Platform.localeName.split('_')[1]),
       child: RepositoryProvider(
         create: (context) => userRepository,
         child: BlocProvider(
