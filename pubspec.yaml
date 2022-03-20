@@ -1,6 +1,6 @@
 name: multitable
 description: An application for studying multiplication tables and other examples from mathematics
-version: 1.0.0
+version: 1.0.01
 
 environment:
   sdk: ">=2.15.0 <3.0.0"

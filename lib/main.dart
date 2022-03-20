@@ -4,20 +4,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multitable/routers/routers.dart';
 import 'package:multitable/ui/home/bloc/home_bloc.dart';
 import 'package:multitable/utils/value.dart';
-
 import 'domain/repository/user_repository.dart';
+import 'dart:io';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   begin();
   await EasyLocalization.ensureInitialized();
   userRepository = await UserRepository.create();
+  List<String> locale = Platform.localeName.split('_');
+  print('Platform.localeName = ${Platform.localeName}');
+  print('Platform.localeName = ${locale[0]}=${locale[1]}');
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('ru', 'RU'), Locale('en', 'US')],
       path: 'assets/translations',
-      fallbackLocale: const Locale('ru', 'RU'),
-      startLocale: const Locale('ru', 'RU'),
+      fallbackLocale: const Locale('en', 'US'),
+      startLocale: Locale(locale[0], locale[1]),
       child: RepositoryProvider(
         create: (context) => userRepository,
         child: BlocProvider(
