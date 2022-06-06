@@ -14,12 +14,43 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5 #https://pub.dev/packages/cupertino_icons
+  flutter_bloc: ^8.0.1 #https://pub.dev/packages/flutter_bloc
+  equatable: ^2.0.3 #https://pub.dev/packages/equatable
+  flutter_svg: ^1.1.0 #https://pub.dev/packages/flutter_svg
+  easy_localization: ^3.0.1 #https://pub.dev/packages/easy_localization
+  flutter_native_splash: ^2.0.15 #https://pub.dev/packages/shared_preferences
+  shared_preferences: ^2.0.15  #https://pub.dev/packages/shared_preferences/install
+  ocarina: ^0.1.2 #https://pub.dev/packages/ocarina
+  flutter_launcher_icons: ^0.9.2 #https://pub.dev/packages/flutter_launcher_icons
+  bart: ^0.2.0 #https://pub.dev/packages/bart
+  flutter_switch: ^0.3.2 #https://pub.flutter-io.cn/packages/flutter_switch
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-flutter:
+# dev_dependencies:
 
+# flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  flutter_test:
+    sdk: flutter
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+
+# flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  # разрешение 1500*2346
+  image: assets/splash.png
+  color: "732984"
+
+flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/icon/
+    - assets/sound/
+    - assets/translations/
